@@ -23,7 +23,7 @@
                     colors: {
                         "primary-color": '#B4F461',
                         "secondary-color": "#F9F7F3",
-                        "greay-color": "#1111110D",
+                        "gray-color": "#111111",
 
                     },
                     fontFamily: {
@@ -37,13 +37,36 @@
 
 <body class="font-lexend">
     <!--Section: Header secction start from here -->
-    <header>
-        <h1 class="text-gray-color opacity-100">Hello</h1>
+    <header class="">
+
+        <!-- Navigation bar starts from here -->
+        <nav class="relative">
+            <div class="fixed top-0 left-0 right-0 bg-white backdrop-blur bg-opacity-70">
+                <!-- Container -->
+                <div class="bg-secondary-color navbar">
+                    <div class="container md:mx-auto justify-between pt-3 pb-7">
+
+                        <button class="btn bg-primary-color px-7 text-gray-color">Blog</button>
+                        <div class="flex items-center gap-2">
+                            <img src="./assets/logo.png" alt="" class="border border-dashed">
+                            <h3 class="font-semibold text-gray-color">Donate Bangladesh</h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <img src="./assets/coin.png" alt="" class="border border-dashed">
+                            <h3 class="font-semibold text-gray-color opacity-70">5500 BDT</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-14 flex gap-5 justify-center pb-7">
+                    <button class="btn bg-primary-color px-7">Donation</button>
+                    <button class="btn border border-gray-color border-opacity-30 px-7">History</button>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <!--Section: Main secction start from here -->
-    <main>
-
+    <main class="mt-[250px]">
     </main>
 
     <!--Section: Footer secction start from here -->
