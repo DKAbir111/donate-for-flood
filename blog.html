@@ -39,7 +39,7 @@
         <div class="container mx-auto flex justify-between items-center">
             <h1 class="text-xl font-bold text-gray-color">Understanding the DOM</h1>
 
-            <div class="flex items-center gap-2">
+            <div class="md:flex items-center gap-2 hidden">
                 <img src="./assets/logo.png" alt="" class="border border-dashed">
                 <h3 class="font-semibold text-gray-color hidden md:block">Donate Bangladesh</h3>
             </div>
@@ -85,14 +85,16 @@
                 <p class="text-lg leading-relaxed">
                     For example, let’s select a button with the ID <code>go-home</code> and log it to the console:
                 </p>
-                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4 overflow-auto">
+                    <code class="language-js whitespace-pre-wrap break-words">
 // Select by ID
 const button = document.getElementById("go-home");
 console.log(button);
 // Select by CSS class
 const items = document.querySelectorAll(".menu-item");
 console.log(items);
-                </code></pre>
+                    </code>
+                </pre>
                 <p class="text-lg leading-relaxed">
                     This method is crucial when you need to manipulate or listen for events on specific elements.
                 </p>
@@ -119,14 +121,17 @@ console.log(items);
                     Here’s an example of event delegation where a parent element listens for click events on its child
                     buttons:
                 </p>
-                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4 overflow-auto">
+                    <code class="language-js whitespace-pre-wrap break-words">
 // Event delegation example
 document.getElementById("parent").addEventListener("click", function(event) {
-    if (event.target.matches(".child-button")) {
-        console.log("Child button clicked!");
-    }
+if (event.target.matches(".child-button")) {
+console.log("Child button clicked!");
+}
 });
-                </code></pre>
+                    </code>
+                </pre>
+
                 <p class="text-lg leading-relaxed">
                     In this example, instead of adding an event listener to each button, we add one to the parent
                     element and handle clicks from the children inside the event handler.
@@ -147,16 +152,19 @@ document.getElementById("parent").addEventListener("click", function(event) {
                     Here’s an example that changes an image’s <code>src</code> attribute and alters the background color
                     of a div:
                 </p>
-                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4 overflow-auto">
+                    <code class="language-js whitespace-pre-wrap break-words">
 // Change an image src
 const image = document.getElementById("myImage");
 image.setAttribute("src", "new-image.png");
-
+                
 // Change element styles
 const box = document.getElementById("myBox");
 box.style.backgroundColor = "blue";
 box.style.padding = "20px";
-                </code></pre>
+                    </code>
+                </pre>
+
                 <p class="text-lg leading-relaxed">
                     By using these methods, you can dynamically update your page based on user interactions or other
                     logic.
