@@ -53,7 +53,8 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./assets/coin.png" alt="" class="border border-dashed">
-                            <h3 class="font-semibold text-gray-color opacity-70">5500 BDT</h3>
+                            <h3 class="font-semibold text-gray-color opacity-70"><span id="current-value">5500</span>
+                                BDT</h3>
                         </div>
 
                         <!-- Mobile responsive -->
@@ -74,8 +75,11 @@
                     </div>
                 </div>
                 <div class="mt-14 flex gap-5 justify-center pb-7">
-                    <button class="btn bg-primary-color px-7">Donation</button>
-                    <button class="btn border border-gray-color border-opacity-30 px-7">History</button>
+                    <button class="btn bg-primary-color px-7 border border-gray-color border-opacity-10"
+                        id="donation-button">Donation</button>
+
+                    <button class="btn  px-7 border border-gray-color border-opacity-10"
+                        id="history-button">History</button>
                 </div>
             </div>
         </nav>
@@ -83,7 +87,8 @@
 
     <!--Section: Main secction start from here -->
     <main class="mt-[250px] container md:mx-auto p-1">
-        <section class="flex flex-col gap-10">
+        <!-- Donation Section -->
+        <section class="flex flex-col gap-10" id="donation-section">
 
             <!-- Card-1 for Noakhali -->
             <div class="border rounded-xl flex gap-10 p-5 flex-col lg:flex-row">
@@ -96,7 +101,7 @@
                     <div>
                         <button class="flex gap-2 items-center px-5 py-2 bg-gray-color rounded-xl bg-opacity-10">
                             <img src="./assets/coin.png" alt="">
-                            <p class="text-gray-color text-opacity-50">0 BDT</p>
+                            <p class="text-gray-color text-opacity-50"> <span id="noakhali-value">4300</span> BDT</p>
                         </button>
                     </div>
                     <div>
@@ -114,10 +119,10 @@
                             impact on the lives of those in need.</p>
                     </div>
                     <div>
-                        <input type="email" placeholder="Write Donation Amount" class="input input-bordered w-full"
-                            required />
+                        <input type="text" placeholder="Write Donation Amount" id="noakhali-input"
+                            class="input input-bordered w-full" required />
                         <div class="form-control mt-5">
-                            <button class="btn bg-primary-color">Donate Now</button>
+                            <button class="btn bg-primary-color" id="noakhali-button">Donate Now</button>
                         </div>
 
                     </div>
@@ -136,7 +141,7 @@
                     <div>
                         <button class="flex gap-2 items-center px-5 py-2 bg-gray-color rounded-xl bg-opacity-10">
                             <img src="./assets/coin.png" alt="">
-                            <p class="text-gray-color text-opacity-50">0 BDT</p>
+                            <p class="text-gray-color text-opacity-50"> <span id="feni-value">1300</span> BDT</p>
                         </button>
                     </div>
                     <div>
@@ -152,10 +157,10 @@
                             donating today to assist those in urgent need.</p>
                     </div>
                     <div>
-                        <input type="email" placeholder="Write Donation Amount" class="input input-bordered w-full"
-                            required />
+                        <input type="email" placeholder="Write Donation Amount" id="feni-input"
+                            class="input input-bordered w-full" required />
                         <div class="form-control mt-5">
-                            <button class="btn bg-primary-color">Donate Now</button>
+                            <button class="btn bg-primary-color" id="feni-button">Donate Now</button>
                         </div>
 
                     </div>
@@ -174,7 +179,7 @@
                     <div>
                         <button class="flex gap-2 items-center px-5 py-2 bg-gray-color rounded-xl bg-opacity-10">
                             <img src="./assets/coin.png" alt="">
-                            <p class="text-gray-color text-opacity-50">0 BDT</p>
+                            <p class="text-gray-color text-opacity-50"> <span id="quota-value">3300</span> BDT</p>
                         </button>
                     </div>
                     <div>
@@ -191,10 +196,10 @@
                             individuals in their time of need.</p>
                     </div>
                     <div>
-                        <input type="email" placeholder="Write Donation Amount" class="input input-bordered w-full"
-                            required />
+                        <input type="email" placeholder="Write Donation Amount" id="quota-input"
+                            class="input input-bordered w-full" required />
                         <div class="form-control mt-5">
-                            <button class="btn bg-primary-color">Donate Now</button>
+                            <button class="btn bg-primary-color" id="quota-button">Donate Now</button>
                         </div>
 
                     </div>
@@ -202,11 +207,29 @@
             </div>
 
 
+            <!-- Modal -->
+
+            <dialog id="my_modal_1" class="modal">
+                <div class="modal-box">
+                    <h3 class="text-4xl font-bold text-center">Congrates!</h3>
+                    <img src="./assets/coin.png" alt="" class="w-10 mx-auto mt-5">
+                    <p class="py-4 font-semibold text-center">You have donated for humankind</p>
+                    <h3 class="text-2xl text-center font-bold">Successfully</h3>
+                    <div class="modal-action">
+                        <form method="dialog" class="w-full flex justify-center">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn border">Close Confirmation</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
+
         </section>
 
         <!-- History Section -->
-        <section class="p-2 md:p-20">
-            <div class="border rounded-lg p-7 flex flex-col gap-3">
+        <section class="p-2 md:p-20 hidden space-y-5" id="history-section">
+            <!-- <div class="border rounded-lg p-7 flex flex-col gap-3">
                 <h3 class="font-semibold">
                     96500 Taka is Donated for famine-2024 at Feni, Bangladesh
                 </h3>
@@ -214,7 +237,7 @@
                     (Bangladesh
                     Standard Time)</p>
 
-            </div>
+            </div> -->
 
         </section>
     </main>
@@ -223,7 +246,7 @@
     <footer class="bg-secondary-color h-32">
 
     </footer>
-
+    <script src="./utilities.js"></script>
     <script src="./app.js"></script>
 </body>
 
