@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the DOM in Web Development</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- Link up with daisyUI -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <!-- Link up with Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Customizing Tailwind config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-color": '#B4F461',
+                        "secondary-color": "#F9F7F3",
+                        "gray-color": "#111111",
+                    },
+                    fontFamily: {
+                        lexend: "Lexend",
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-100 font-lexend">
+    <header class="p-6 bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-gray-color">Understanding the DOM</h1>
+
+            <div class="flex items-center gap-2">
+                <img src="./assets/logo.png" alt="" class="border border-dashed">
+                <h3 class="font-semibold text-gray-color hidden md:block">Donate Bangladesh</h3>
+            </div>
+            <button class="btn bg-primary-color px-7 text-gray-color" id="go-home">Home</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-10 px-6 lg:px-0">
+        <!-- Blog Section -->
+        <section class="bg-white p-10 rounded-lg shadow-lg">
+            <h1 class="text-4xl font-bold text-gray-800 mb-6">Understanding the Document Object Model (DOM) in Web
+                Development</h1>
+
+            <!-- 1. What is DOM? -->
+            <article class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4">1. What is the Document Object Model (DOM)?</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    The <strong>Document Object Model (DOM)</strong> is a structured representation of a web page's
+                    content. It treats an HTML or XML document as a tree-like structure, where each element is a node.
+                    The DOM allows developers to interact with web pages using programming languages like JavaScript.
+                    Using the DOM, you can manipulate elements, change their content, styles, or even add or remove
+                    elements dynamically.
+                </p>
+                <p class="text-lg leading-relaxed">
+                    For example, if you want to change the text inside a paragraph or dynamically change the color of a
+                    button, you can do this using the DOM.
+                </p>
+            </article>
+
+            <!-- 2. How to select an element from the DOM? -->
+            <article class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4">2. How do you select an element from the DOM?</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    JavaScript provides several methods to select elements in the DOM. Below are the common ways to
+                    access elements:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><code>document.getElementById()</code> - Selects an element by its unique <code>id</code>.</li>
+                    <li><code>document.querySelector()</code> - Selects the first element that matches a CSS selector.
+                    </li>
+                    <li><code>document.querySelectorAll()</code> - Selects all elements that match a CSS selector.</li>
+                </ul>
+                <p class="text-lg leading-relaxed">
+                    For example, let’s select a button with the ID <code>go-home</code> and log it to the console:
+                </p>
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+// Select by ID
+const button = document.getElementById("go-home");
+console.log(button);
+// Select by CSS class
+const items = document.querySelectorAll(".menu-item");
+console.log(items);
+                </code></pre>
+                <p class="text-lg leading-relaxed">
+                    This method is crucial when you need to manipulate or listen for events on specific elements.
+                </p>
+            </article>
+
+            <!-- 3. What is event delegation? -->
+            <article class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4">3. What is event delegation in the context of DOM, and why is it
+                    useful?</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    <strong>Event delegation</strong> is a technique in JavaScript where a single event listener is
+                    attached to a parent element to manage events triggered by its child elements.
+                    Instead of adding multiple event listeners to individual child elements, the parent element listens
+                    for all events and determines the source of the event.
+                </p>
+                <p class="text-lg leading-relaxed mb-4">
+                    This approach is useful for several reasons:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>It improves performance when dealing with many child elements.</li>
+                    <li>It allows you to handle events for dynamically added elements.</li>
+                </ul>
+                <p class="text-lg leading-relaxed">
+                    Here’s an example of event delegation where a parent element listens for click events on its child
+                    buttons:
+                </p>
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+// Event delegation example
+document.getElementById("parent").addEventListener("click", function(event) {
+    if (event.target.matches(".child-button")) {
+        console.log("Child button clicked!");
+    }
+});
+                </code></pre>
+                <p class="text-lg leading-relaxed">
+                    In this example, instead of adding an event listener to each button, we add one to the parent
+                    element and handle clicks from the children inside the event handler.
+                </p>
+            </article>
+
+            <!-- 4. How to manipulate attributes and styles using the DOM? -->
+            <article>
+                <h2 class="text-2xl font-semibold mb-4">4. How do you manipulate the attributes and styles using the
+                    DOM?</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    You can manipulate the attributes and styles of elements using the DOM API in JavaScript. The
+                    <code>setAttribute()</code> and <code>getAttribute()</code> methods allow you to manage attributes
+                    like <code>src</code>, <code>href</code>, and <code>class</code>. Additionally, the
+                    <code>style</code> property lets you dynamically apply CSS to elements.
+                </p>
+                <p class="text-lg leading-relaxed mb-4">
+                    Here’s an example that changes an image’s <code>src</code> attribute and alters the background color
+                    of a div:
+                </p>
+                <pre class="bg-gray-100 p-6 rounded-lg mb-4"><code class="language-js">
+// Change an image src
+const image = document.getElementById("myImage");
+image.setAttribute("src", "new-image.png");
+
+// Change element styles
+const box = document.getElementById("myBox");
+box.style.backgroundColor = "blue";
+box.style.padding = "20px";
+                </code></pre>
+                <p class="text-lg leading-relaxed">
+                    By using these methods, you can dynamically update your page based on user interactions or other
+                    logic.
+                </p>
+            </article>
+        </section>
+    </main>
+
+    <footer class="mt-10 p-6 bg-secondary-color text-center">
+        <p class="text-gray-color text-opacity-70">&copy; 2024 Donate Bangladesh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById("go-home").addEventListener("click", function () {
+            window.location.href = "./index.html";
+        });
+    </script>
+</body>
+
+</html>

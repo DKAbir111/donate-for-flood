@@ -37,7 +37,8 @@ document.getElementById("quota-button").addEventListener("click", function () {
 
 })
 
-function showModal() {
-    const inputElement = document.getElementById("quota-input");
-    const input = parseFloat(inputElement.value);
-}
+// toggle-page
+document.getElementById("go-blog").addEventListener("click", function () {
+    window.location.href = "./blog.html";
+})
+
