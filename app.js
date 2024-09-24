@@ -11,29 +11,23 @@ document.getElementById("donation-button").addEventListener("click", function ()
 })
 
 
-
-
+//Update current value, Destination value and make a history about it
 // Noakhali
 document.getElementById("noakhali-button").addEventListener("click", function () {
-    updateHistory("noakhali-button");
-    updateValue("noakhali-input", "noakhali-value");
+    updateValue("noakhali-input", "noakhali-value", "noakhali-button");
 
 
 })
 
 // Feni
 document.getElementById("feni-button").addEventListener("click", function () {
-    updateHistory("feni-button");
-    updateValue("feni-input", "feni-value");
-
+    updateValue("feni-input", "feni-value", "feni-button");
 
 })
 
 // Quota
 document.getElementById("quota-button").addEventListener("click", function () {
-    updateHistory("quota-button");
-    updateValue("quota-input", "quota-value");
-
+    updateValue("quota-input", "quota-value", "quota-button");
 
 })
 

@@ -20,11 +20,12 @@ function showSection(id, id2) {
 
 // Update history
 function updateHistory(id) {
-
+    const noFund = document.getElementById("no-fund");
     if (id === "noakhali-button") {
         const inputElement = document.getElementById("noakhali-input");
         const input = parseFloat(inputElement.value);
         if (!isNaN(input) && input > 0) {
+            noFund.classList.add("hidden");
             document.getElementById("history-section").innerHTML += `
      <div class="border rounded-lg p-7 flex flex-col gap-3">
                 <h3 class="font-semibold">
@@ -38,6 +39,7 @@ function updateHistory(id) {
         const inputElement = document.getElementById("feni-input");
         const input = parseFloat(inputElement.value);
         if (!isNaN(input) && input > 0) {
+            noFund.classList.add("hidden");
             document.getElementById("history-section").innerHTML += `
      <div class="border rounded-lg p-7 flex flex-col gap-3">
                 <h3 class="font-semibold">
@@ -53,6 +55,7 @@ function updateHistory(id) {
         const inputElement = document.getElementById("quota-input");
         const input = parseFloat(inputElement.value);
         if (!isNaN(input) && input > 0) {
+            noFund.classList.add("hidden");
             document.getElementById("history-section").innerHTML += `
         <div class="border rounded-lg p-7 flex flex-col gap-3">
                    <h3 class="font-semibold">
@@ -69,9 +72,15 @@ function updateHistory(id) {
 
 
 //Update current value and destination donation value
-function updateValue(id, id2) {
+function updateValue(id, id2, id3) {
     const modal = document.getElementById('my_modal_1');
     const input = parseFloat(document.getElementById(id).value);
+    let currentValue = parseFloat(document.getElementById("current-value").innerText);
+    if (input > currentValue) {
+        alert("Insufficient Funds.");
+        document.getElementById(id).value = '';
+        return;
+    }
     if (isNaN(input) || input <= 0) {
         alert("Please enter a valid positive number.");
         document.getElementById(id).value = '';
@@ -81,10 +90,10 @@ function updateValue(id, id2) {
         const destinationValue = parseFloat(document.getElementById(id2).innerText);
         const newDestinationValue = destinationValue + input;
         document.getElementById(id2).innerText = newDestinationValue;
-        let currentValue = parseFloat(document.getElementById("current-value").innerText);
         currentValue = currentValue - input;
         document.getElementById("current-value").innerText = currentValue;
         modal.showModal();
+        updateHistory(id3);
         document.getElementById(id).value = '';
         return;
     }
